@@ -16,19 +16,42 @@ create digit_codes
     digit_codes swap + c@
 ;
 
-\ Show digit on the 12-position 7 segment display. 
-: show_digit ( digit position -- )
+\ Turn off all LEDs by setting all anodes to 1
+: turn_off_all ( -- )
     $3f latc mset
-    dup 6 < if
-        swap get_digit_code
-        latb c!
-        $20 swap rshift invert
-        latc c!
-    else
-        swap get_digit_code
-        latd c!
-        6 -
-        $20 swap rshift invert
-        latc c!
-    then
+;
+
+\ Turn on LEDs on given position, positions from 0 to 5
+: turn_on ( position -- )
+    $20 swap rshift invert
+    latc c!
+;
+
+\ Write code of given digit to port B. Also set DP,
+\ which is MSB in input byte.
+: portb_digit ( digit -- )
+    dup $7f and
+    get_digit_code
+    swap
+    #7 rshift invert and
+    latb c!
+;
+
+\ Write code of given digit to port D. Also set DP,
+\ which is MSB in input byte.
+: portd_digit ( digit -- )
+    dup $7f and
+    get_digit_code
+    swap
+    #7 rshift invert and
+    latd c!
+;
+
+\ Show 2 digits on the 12-position 7 segment display. 
+\ One digit for left part, second one for right part.
+\ Each part of display has 6 positions.
+: show_pair ( position d1 d2 -- )
+    portd_digit
+    portb_digit
+    turn_on
 ;
