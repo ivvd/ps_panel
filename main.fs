@@ -3,9 +3,6 @@
 marker -main-module
 
 ram
-\ 12-cells array for keeping digits to put on display.
-create disp_arr allot #12
-
 \ Variable for counting display positions
 variable disp_pos
 
@@ -32,7 +29,11 @@ flash
 : main ( -- )
     init \ Setup hardware
     0 disp_pos ! \ Set display position to 0
-    init_disp_arr \ Test number for display
+    \ Display test numbers
+    123 voltage_1
+    456 current_1
+    789 voltage_2
+    321 current_2
     begin
         disp_pos @
         disp_arr disp_pos @ + c@
