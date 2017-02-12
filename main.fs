@@ -7,25 +7,6 @@ ram
 variable disp_pos
 
 flash
-: init_disp_arr ( -- )
-    #12 for
-        #16 disp_arr r@ + c!
-    next
-
-    $0 disp_arr #0 + c!
-    $81 disp_arr #1 + c!
-    $2 disp_arr #2 + c!
-    $3 disp_arr #3 + c!
-    $84 disp_arr #4 + c!
-    $5 disp_arr #5 + c!
-    $6 disp_arr #6 + c!
-    $87 disp_arr #7 + c!
-    $8 disp_arr #8 + c!
-    $9 disp_arr #9 + c!
-    $8a disp_arr #10 + c!
-    $b disp_arr #11 + c!
-;
-
 : main ( -- )
     init \ Setup hardware
     0 disp_pos ! \ Set display position to 0
