@@ -1,12 +1,39 @@
-\ Main function for power supply pannel project
+\ Main function for power supply panel project
 -main-module
 marker -main-module
 
-ram
-\ Variable for counting display positions
-variable disp_pos
+\ Timer 0 interrupt
+: tmr0-irq
+    [i
+        %100 intcon mtst if \ Test TMR0IF
+            disp_upd
+            %100 intcon mclr \ Clear TMR0IF
+        then
+    i]
+;i
 
-flash
+\ Setup hardware
+: init ( -- )
+    \ Init GPIOs
+    $ff latb mset
+    $ff latd mset
+    %111111 latc mset
+    %111111 trisc mclr
+    $ff trisb mclr
+    $ff trisd mclr
+    \ Init TMR0, prescaler = 128, 8b mode, overflow every 3.2ms !!! 
+    %11000110 t0con c!
+    \ Install interrupt service word
+    ['] tmr0-irq 0 int!
+    \ Clear TMR0 interrupt
+    %100 intcon mclr
+    \ Global interrupt enable, TMR0 interrupt enable
+    %10100000 intcon mset
+    \ Init global var
+    0 disp_pos ! \ Set display position to 0
+;
+
+\ Main entry point
 : main ( -- )
     init \ Setup hardware
     0 disp_pos ! \ Set display position to 0
@@ -16,19 +43,11 @@ flash
     789 voltage_2
     321 current_2
     begin
-        disp_pos @
-        disp_arr disp_pos @ + c@
-        disp_arr disp_pos @ 6 + + c@
-        show_pair
-        
-        \ Update position counter
-        disp_pos @
-        1 +
-        \ If more then 5, set to 0
-        dup 5 > if drop 0 then
-        disp_pos !
-
-        \ Wait a bit
-        #2 ms 
+        \ Do nothing
+        cwd
+        \ disp_upd
+        \ 5 ms
     key? until
 ;
+
+' main is turnkey

@@ -1,10 +1,6 @@
 -display
 marker -display
 
-ram
-\ 12-cells array for keeping digits to put on display.
-create disp_arr allot #12
-
 \ Convert ASCII character to number
 : char2num ( c -- n )
     $30 -

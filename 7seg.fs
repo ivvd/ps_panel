@@ -2,18 +2,27 @@
 -7seg-control
 marker -7seg-control
 
-\ 0...15 - hex digits, 16 - space
+ram
+\ Variable for counting display positions
+variable disp_pos
+
+\ 12-cells array for keeping digits to put on display.
+create disp_arr allot #12
+
+\ 0...15 - hex digits, 16 - space, other bytes for aligning
 flash
 create digit_codes
     $11 c, $7d c, $23 c, $29 c,
     $4d c, $89 c, $81 c, $3d c,
     $01 c, $09 c, $05 c, $c1 c,
     $93 c, $61 c, $83 c, $87 c,
-    $ff c,
-
+    $ff c, $ff c, $ff c, $ff c,
+    $ff c, $ff c, $ff c, $ff c,
+ram
+    
 \ Get array element by its index
 : get_digit_code ( digit -- code)
-    digit_codes swap + c@
+    digit_codes + c@
 ;
 
 \ Turn off all LEDs by setting all anodes to 1
@@ -54,4 +63,18 @@ create digit_codes
     portd_digit
     portb_digit
     turn_on
+;
+
+\ Dynamic indication handler, called from Timer 0 interrupt
+: disp_upd
+    disp_pos @
+    disp_arr disp_pos @ + c@
+    disp_arr disp_pos @ 6 + + c@
+    show_pair
+    \ Update position counter
+    disp_pos @
+    1 +
+    \ If more then 5, set to 0
+    dup 5 > if drop 0 then
+    disp_pos !
 ;
