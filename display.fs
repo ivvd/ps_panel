@@ -11,7 +11,7 @@ marker -display
     0 <# # # # #>
 ;
 
-: voltage_1 ( n -- )
+: current_1 ( n -- )
     get_ascii
     drop
     dup @ char2num disp_arr c!
@@ -19,7 +19,7 @@ marker -display
     2 + @ char2num disp_arr 2 + c!
 ;
 
-: current_1 ( n -- )
+: voltage_1 ( n -- )
     get_ascii
     drop
     dup @ char2num disp_arr 3 + c!
@@ -27,7 +27,7 @@ marker -display
     2 + @ char2num disp_arr 5 + c!
 ;
 
-: voltage_2 ( n -- )
+: current_2 ( n -- )
     get_ascii
     drop
     dup @ char2num disp_arr 6 + c!
@@ -35,7 +35,7 @@ marker -display
     2 + @ char2num disp_arr 8 + c!
 ;
 
-: current_2 ( n -- )
+: voltage_2 ( n -- )
     get_ascii
     drop
     dup @ char2num disp_arr 9 + c!
