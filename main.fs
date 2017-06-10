@@ -15,12 +15,17 @@ marker -main-module
 \ Setup hardware
 : init ( -- )
     \ Init GPIOs
+    $ff trisa mset
     $ff latb mset
     $ff latd mset
     %111111 latc mset
     %111111 trisc mclr
     $ff trisb mclr
     $ff trisd mclr
+    \ Init ADC, AN0...AN4 are analog, Fadc=Fosc/64, right justified
+    %11000010 adcon1 c!
+    %10000000 adcon0 c!
+    1 adcon0 mset
     \ Init TMR0, prescaler = 128, 8b mode, overflow every 3.2ms !!! 
     %11000110 t0con c!
     \ Install interrupt service word
@@ -44,9 +49,14 @@ marker -main-module
     321 current_2
     begin
         \ Do nothing
-        cwd
+        \ cwd
         \ disp_upd
-        \ 5 ms
+	cr
+	0 adc@ u.
+	1 adc@ u.
+	2 adc@ u.
+	3 adc@ u.
+        200 ms
     key? until
 ;
 

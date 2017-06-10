@@ -19,3 +19,10 @@ $fff0 constant intcon3
 $ffd7 constant tmr0h
 $ffd6 constant tmr0l
 $ffd5 constant t0con
+
+\ ADC registers
+$ffc4 constant adresh
+$ffc3 constant adresl
+$ffc2 constant adcon0
+$ffc1 constant adcon1
+
