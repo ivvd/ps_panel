@@ -14,8 +14,8 @@ marker -display
 : current_1 ( n -- )
     get_ascii
     drop
-    dup @ char2num disp_arr c!
-    dup 1 + @ char2num $80 or disp_arr 1 + c!
+    dup @ char2num $80 or disp_arr c!
+    dup 1 + @ char2num disp_arr 1 + c!
     2 + @ char2num disp_arr 2 + c!
 ;
 
@@ -30,8 +30,8 @@ marker -display
 : current_2 ( n -- )
     get_ascii
     drop
-    dup @ char2num disp_arr 6 + c!
-    dup 1 + @ char2num $80 or disp_arr 7 + c!
+    dup @ char2num $80 or disp_arr 6 + c!
+    dup 1 + @ char2num disp_arr 7 + c!
     2 + @ char2num disp_arr 8 + c!
 ;
 
