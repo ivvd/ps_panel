@@ -52,10 +52,10 @@ marker -main-module
         \ cwd
         \ disp_upd
 	cr
-	0 adc@ u.
-	1 adc@ u.
-	2 adc@ u.
-	3 adc@ u.
+	0 adc@ dup volts@ dup u. voltage_1
+	2 adc@ amps1@ dup u. current_1 
+	1 adc@ dup volts@ dup u. voltage_2
+	3 adc@ amps2@ dup u. current_2
         200 ms
     key? until
 ;
