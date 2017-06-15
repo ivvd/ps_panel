@@ -41,21 +41,22 @@ marker -main-module
 \ Main entry point
 : main ( -- )
     init \ Setup hardware
+    fl-
     0 disp_pos ! \ Set display position to 0
     \ Display test numbers
-    123 voltage_1
-    456 current_1
-    789 voltage_2
-    321 current_2
+    123 dispV1
+    456 dispA1
+    789 dispV2
+    321 dispA2
     begin
         \ Do nothing
         \ cwd
         \ disp_upd
 	cr
-	0 adc@ dup volts@ dup u. voltage_1
-	2 adc@ amps1@ dup u. current_1 
-	1 adc@ dup volts@ dup u. voltage_2
-	3 adc@ amps2@ dup u. current_2
+	0 adc@ dup volts@ dup u. dispV2
+	2 adc@ amps2@ dup u. dispA2 
+	1 adc@ dup volts@ dup u. dispV1
+	3 adc@ amps1@ dup u. dispA1
         200 ms
     key? until
 ;

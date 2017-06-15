@@ -2,8 +2,8 @@
 marker -read-adc
 
 eeprom 
-variable a1mul
 variable a2mul
+variable a1mul
 ram
 
 \ Get analog channel value
@@ -29,19 +29,19 @@ ram
     - dup 32767 > if drop 0 then
 ;
 
-\ Get current in 1st channel
-: amps1@ ( adc1 adc2 -- u )
-    udiff 
-    dup
-    a1mul @
-    2048 um*/ swap drop
-;
-
 \ Get current in 2nd channel
 : amps2@ ( adc1 adc2 -- u )
     udiff 
     dup
     a2mul @
+    2048 um*/ swap drop
+;
+
+\ Get current in 1st channel
+: amps1@ ( adc1 adc2 -- u )
+    udiff 
+    dup
+    a1mul @
     2048 um*/ swap drop
 ;
 
