@@ -38,6 +38,16 @@ marker -main-module
     0 disp_pos ! \ Set display position to 0
 ;
 
+\ Print volts
+: printV ( u -- )
+    0 <# # [char] . hold #s #> type ."  V; "
+;
+
+\ Print amperes
+: printA ( u -- )
+    0 <# # # [char] . hold #s #> type ."  A; "
+;
+
 \ Main entry point
 : main ( -- )
     init \ Setup hardware
@@ -52,11 +62,12 @@ marker -main-module
         \ Do nothing
         \ cwd
         \ disp_upd
-	cr
-	0 adc@ dup volts@ dup u. dispV2
-	2 adc@ amps2@ dup u. dispA2 
-	1 adc@ dup volts@ dup u. dispV1
-	3 adc@ amps1@ dup u. dispA1
+	cr ." Ch1: "
+	1 adc@ dup volts@ dup printV dispV1
+	3 adc@ amps1@ dup printA dispA1
+	cr ." Ch2: "
+	0 adc@ dup volts@ dup printV dispV2
+	2 adc@ amps2@ dup printA dispA2 
         200 ms
     key? until
 ;
