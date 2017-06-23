@@ -1,0 +1,169 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:microchip_pic18mcu
+LIBS:ps_panel-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 4
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Sheet
+S 6000 1700 1100 2300
+U 587BAA54
+F0 "ps_panel_display" 60
+F1 "ps_panel_display.sch" 60
+F2 "A1" I L 6000 1750 60 
+F3 "B1" I L 6000 1850 60 
+F4 "C1" I L 6000 1950 60 
+F5 "D1" I L 6000 2050 60 
+F6 "E1" I L 6000 2150 60 
+F7 "F1" I L 6000 2250 60 
+F8 "G1" I L 6000 2350 60 
+F9 "DP1" I L 6000 2450 60 
+F10 "A2" I L 6000 2600 60 
+F11 "B2" I L 6000 2700 60 
+F12 "C2" I L 6000 2800 60 
+F13 "D2" I L 6000 2900 60 
+F14 "E2" I L 6000 3000 60 
+F15 "F2" I L 6000 3100 60 
+F16 "G2" I L 6000 3200 60 
+F17 "DP2" I L 6000 3300 60 
+F18 "An1" I L 6000 3450 60 
+F19 "An2" I L 6000 3550 60 
+F20 "An3" I L 6000 3650 60 
+F21 "An4" I L 6000 3750 60 
+F22 "An5" I L 6000 3850 60 
+F23 "An6" I L 6000 3950 60 
+$EndSheet
+Wire Wire Line
+	4900 1750 6000 1750
+Wire Wire Line
+	4900 1850 6000 1850
+Wire Wire Line
+	4900 1950 6000 1950
+Wire Wire Line
+	4900 2050 6000 2050
+Wire Wire Line
+	4900 2150 6000 2150
+Wire Wire Line
+	4900 2250 6000 2250
+Wire Wire Line
+	4900 2350 6000 2350
+Wire Wire Line
+	4900 2450 6000 2450
+Wire Wire Line
+	4900 2600 6000 2600
+Wire Wire Line
+	4900 2700 6000 2700
+Wire Wire Line
+	4900 2800 6000 2800
+Wire Wire Line
+	4900 2900 6000 2900
+Wire Wire Line
+	4900 3000 6000 3000
+Wire Wire Line
+	4900 3100 6000 3100
+Wire Wire Line
+	4900 3200 6000 3200
+Wire Wire Line
+	6000 3300 4900 3300
+Wire Wire Line
+	4900 3450 6000 3450
+Wire Wire Line
+	6000 3550 4900 3550
+Wire Wire Line
+	4900 3650 6000 3650
+Wire Wire Line
+	6000 3750 4900 3750
+Wire Wire Line
+	4900 3850 6000 3850
+Wire Wire Line
+	6000 3950 4900 3950
+$Sheet
+S 3900 4700 1000 300 
+U 594C9008
+F0 "ps_panel_power" 60
+F1 "ps_panel_power.sch" 60
+F2 "+5V" O R 4900 4900 60 
+F3 "GND" O R 4900 4800 60 
+$EndSheet
+$Sheet
+S 3900 1700 1000 2600
+U 587BAA51
+F0 "ps_panel_mcu" 60
+F1 "ps_panel_mcu.sch" 60
+F2 "A1" O R 4900 1750 60 
+F3 "B1" O R 4900 1850 60 
+F4 "C1" O R 4900 1950 60 
+F5 "D1" O R 4900 2050 60 
+F6 "E1" O R 4900 2150 60 
+F7 "F1" O R 4900 2250 60 
+F8 "G1" O R 4900 2350 60 
+F9 "DP1" O R 4900 2450 60 
+F10 "A2" O R 4900 2600 60 
+F11 "B2" O R 4900 2700 60 
+F12 "C2" O R 4900 2800 60 
+F13 "D2" O R 4900 2900 60 
+F14 "E2" O R 4900 3000 60 
+F15 "F2" O R 4900 3100 60 
+F16 "G2" O R 4900 3200 60 
+F17 "DP2" O R 4900 3300 60 
+F18 "An1" O R 4900 3450 60 
+F19 "An2" O R 4900 3550 60 
+F20 "An3" O R 4900 3650 60 
+F21 "An4" O R 4900 3750 60 
+F22 "An5" O R 4900 3850 60 
+F23 "An6" O R 4900 3950 60 
+F24 "+5V" I R 4900 4100 60 
+F25 "GND" I R 4900 4200 60 
+$EndSheet
+Wire Wire Line
+	4900 4200 5050 4200
+Wire Wire Line
+	5050 4200 5050 4800
+Wire Wire Line
+	5050 4800 4900 4800
+Wire Wire Line
+	4900 4900 5150 4900
+Wire Wire Line
+	5150 4900 5150 4100
+Wire Wire Line
+	5150 4100 4900 4100
+$EndSCHEMATC
