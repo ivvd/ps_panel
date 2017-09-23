@@ -13,3 +13,14 @@ represent voltages and currents of each power supply's channel.
 ## Firmware
 Firmware is written using [FlashForth](http://www.flashforth.com/), that is Forth 
 implementation for Microchip's PIC and AVR microcontrollers.
+All interruction with FlashForth firmware inside MCU is via serial port. 
+Source code files is loaded as plain text line by line. FlashForth distribution includes 
+convinient shell program to do so. It is necessary to load source files in proper sequence to 
+avoid usage of Forth words that is undefined yet.
+Loading sequence:
+1. math.txt (from FlashForth distribution)
+2. p18f452.fs
+3. 7seg.fs
+4. display.fs
+5. analog.fs
+6. main.fs
